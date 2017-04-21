@@ -30,3 +30,29 @@ POST /transfer/:src/:dst/:amt
 < 400 Bad Request - amount is <= 0
 < 404 Not Found - invalid account number
 ```
+
+### Usage
+
+##### Java: Quick and simple, but not scalable
+
+```
+$ sbt 'runMain JMain'
+...
+```
+
+```
+$ curl localhost:8080/balance/001
+63000
+$ curl localhost:8080/balance/002
+48000
+$ curl -X POST localhost:8080/transfer/001/002/1000
+OK
+$ curl localhost:8080/balance/001
+62000
+$ curl localhost:8080/balance/002
+49000
+```
+
+##### Scala: Scalable and interesting, but not quick
+
+TBD
