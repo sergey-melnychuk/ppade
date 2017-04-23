@@ -1,4 +1,4 @@
-package transfer
+package scalable.transfer
 
 import akka.actor.ActorSystem
 import akka.testkit.{ImplicitSender, TestKit}

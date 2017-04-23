@@ -1,4 +1,4 @@
-package transfer
+package scalable.transfer
 
 import scala.language.postfixOps
 import akka.actor.{Actor, ActorLogging, ActorNotFound, ActorRef, Props, ReceiveTimeout}
@@ -82,7 +82,7 @@ class Transfer(id: Long, srcNr: String, dstNr: String, amount: Long, replyTo: Ac
   }
 
   def success(): Unit = {
-    log.debug("Transfer id={} src={} dst={} amt={} succeeded", id, srcNr, dstNr, amount)
+    log.info("Transfer id={} src={} dst={} amt={} succeeded", id, srcNr, dstNr, amount)
     replyTo ! Result(id, srcNr, dstNr, amount, None)
     context stop self
   }

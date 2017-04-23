@@ -1,3 +1,4 @@
+package simple;
 /*
  * Quick and simple approach based on shared mutable state and lock ordering to avoid deadlock.
  *

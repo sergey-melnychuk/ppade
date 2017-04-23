@@ -1,4 +1,4 @@
-package transfer
+package scalable.transfer
 
 import akka.actor.{Actor, ActorLogging, Props}
 
@@ -11,19 +11,19 @@ class Account(nr: String, startBalance: Long, limit: Long) extends Actor with Ac
 
   override def receive = {
     case GetBalance =>
-      log.debug("balance: {}", balance)
+      log.info("balance: {}", balance)
       sender ! Balance(nr, sequence, balance)
 
     case op @ Deposit(amount) =>
       balance += amount
       sequence += 1
-      log.debug("seq: {}, deposit: {}, balance: {}", sequence, amount, balance)
+      log.info("seq: {}, deposit: {}, balance: {}", sequence, amount, balance)
       sender ! Result(nr, op, sequence, balance, None)
 
     case op @ Withdraw(amount) if balance - amount >= threshold =>
       balance -= amount
       sequence += 1
-      log.debug("seq: {}, withdraw: {}, balance: {}", sequence, amount, balance)
+      log.info("seq: {}, withdraw: {}, balance: {}", sequence, amount, balance)
       sender ! Result(nr, op, sequence, balance, None)
 
     case op @ Withdraw(amount) =>
