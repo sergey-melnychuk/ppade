@@ -36,7 +36,7 @@ POST /transfer/:src/:dst/:amt
 ##### Java: Quick and simple, but not scalable
 
 ```
-$ sbt 'runMain JMain'
+$ sbt 'runMain simple.JMain'
 ...
 ```
 
@@ -55,4 +55,12 @@ $ curl localhost:8080/balance/002
 
 ##### Scala: Scalable and interesting, but not quick
 
-TBD
+```
+$ sbt 'runMain scalable.Main'
+...
+```
+
+```
+$ curl -X POST localhost:8080/transfer/00001/00002/1000
+<output>
+```
